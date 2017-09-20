@@ -50,4 +50,26 @@ public class GLUtils {
         return texture[0];
     }
 
+    /**
+     * Convert a 4x4 matrix that is stored in column-major order
+     * to a string.
+     * @param matrix
+     * @return
+     */
+    public static String mat4ToString(float[] matrix) {
+        if (matrix.length < 16) {
+            return "not a 4x4 matrix";
+        }
+        StringBuilder str = new StringBuilder();
+        for (int col = 0; col < 4; col++) {
+            for (int row = 0; row < 4; row++) {
+                str.append(String.format("%.5f", matrix[4 * row + col]));
+                str.append(',');
+            }
+            str.deleteCharAt(str.length() - 1);
+            str.append('\n');
+        }
+        return str.toString();
+    }
+
 }
